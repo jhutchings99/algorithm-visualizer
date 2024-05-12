@@ -6,8 +6,22 @@ import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
 
 const ParticlesComponent = (props) => {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   const [key, setKey] = useState(true);
+
+  const calculateColor = () => {
+    if (theme === "system") {
+      if (systemTheme === "dark") {
+        return "#FFFFFF";
+      } else if (systemTheme === "light") {
+        return "#000000";
+      }
+    } else if (theme === "dark") {
+      return "#FFFFFF";
+    } else if (theme === "light") {
+      return "#000000";
+    }
+  };
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -16,6 +30,7 @@ const ParticlesComponent = (props) => {
   }, []);
 
   useEffect(() => {
+    calculateColor();
     setKey((prevKey) => !prevKey);
   }, [theme]);
 
@@ -50,10 +65,10 @@ const ParticlesComponent = (props) => {
       },
       particles: {
         color: {
-          value: theme === "dark" ? "#FFFFFF" : "#000000",
+          value: calculateColor(),
         },
         links: {
-          color: theme === "dark" ? "#FFFFFF" : "#000000",
+          color: calculateColor(),
           distance: 150,
           enable: true,
           opacity: 0.3,

@@ -37,7 +37,7 @@ export default function Home() {
         <div className="flex justify-between">
           <Card className="w-[20vw] backdrop-blur-sm bg-transparent">
             <CardHeader>
-              <CardTitle>Dijkstra's</CardTitle>
+              <CardTitle>Dijkstra&apos;s</CardTitle>
               <CardDescription>
                 A widely used algorithm for finding the shortest path between
                 nodes in a graph, particularly in routing and navigation
@@ -79,7 +79,7 @@ export default function Home() {
               <CardDescription>
                 An algorithm used to find the shortest path in a graph with
                 negative edge weights, making it useful in scenarios where
-                Dijkstra's algorithm cannot be applied.
+                Dijkstra&apos;s algorithm cannot be applied.
               </CardDescription>
             </CardHeader>
             <CardFooter>
@@ -117,8 +117,9 @@ export default function Home() {
               <CardTitle>Huffman Encoding</CardTitle>
               <CardDescription>
                 Huffman encoding compresses data by assigning shorter codes to
-                more frequent characters. It's widely used for its simplicity
-                and efficiency in file compression and telecommunications.
+                more frequent characters. It&apos;s widely used for its
+                simplicity and efficiency in file compression and
+                telecommunications.
               </CardDescription>
             </CardHeader>
             <CardFooter>
