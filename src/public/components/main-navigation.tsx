@@ -257,7 +257,7 @@ const hashTable: { title: string; href: string; description: string }[] = [
 
 export default function MainNavigation() {
   return (
-    <NavigationMenu className="border-b backdrop-blur-sm">
+    <NavigationMenu className="border-b backdrop-blur-sm h-20">
       <NavigationMenuList className="flex justify-between w-screen p-4">
         <div className="flex gap-2 items-center">
           <Image
