@@ -1,0 +1,26 @@
+<svg width="210" height="150" viewBox="0 0 210 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_4_60" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="210" height="150">
+<circle cx="75" cy="135" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="105" cy="75" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="165" cy="75" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="135" cy="15" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="195" cy="135" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="15" cy="15" r="12.5" stroke="black" stroke-width="5"/>
+<circle cx="135" cy="15" r="12.5" stroke="black" stroke-width="5"/>
+<line x1="20.2123" y1="26.8356" x2="70.2123" y2="121.836" stroke="black" stroke-width="5"/>
+<line x1="99.1742" y1="87.234" x2="78.1742" y2="124.234" stroke="black" stroke-width="5"/>
+<line x1="132.174" y1="27.234" x2="111.174" y2="64.234" stroke="black" stroke-width="5"/>
+<line y1="-2.5" x2="42.5441" y2="-2.5" transform="matrix(-0.493605 -0.869686 -0.869686 0.493605 158 63)" stroke="black" stroke-width="5"/>
+<line x1="154" y1="76.5" x2="117" y2="76.5" stroke="black" stroke-width="5"/>
+<line y1="-2.5" x2="42.5441" y2="-2.5" transform="matrix(-0.493605 -0.869686 -0.869686 0.493605 190 124)" stroke="black" stroke-width="5"/>
+</mask>
+<g mask="url(#mask0_4_60)">
+<rect x="-48" y="-35" width="317" height="226" fill="url(#paint0_linear_4_60)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_4_60" x1="110.5" y1="-35" x2="110.5" y2="191" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF81CC"/>
+<stop offset="1" stop-color="#240089"/>
+</linearGradient>
+</defs>
+</svg>
