@@ -257,7 +257,7 @@ const hashTable: { title: string; href: string; description: string }[] = [
 
 export default function MainNavigation() {
   return (
-    <NavigationMenu className="border-b">
+    <NavigationMenu className="border-b backdrop-blur-sm">
       <NavigationMenuList className="flex justify-between w-screen p-4">
         <div className="flex gap-2 items-center">
           <Image
@@ -272,7 +272,9 @@ export default function MainNavigation() {
         </div>
         <div className="flex gap-2">
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Array</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Array
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {array.map((algorithm) => (
@@ -288,7 +290,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Stack</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Stack
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {stack.map((algorithm) => (
@@ -304,7 +308,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Queue</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Queue
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {queue.map((algorithm) => (
@@ -320,7 +326,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Linked List</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Linked List
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {linkedList.map((algorithm) => (
@@ -336,7 +344,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Tree</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Tree
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {tree.map((algorithm) => (
@@ -352,7 +362,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Graph</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Graph
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {graph.map((algorithm) => (
@@ -368,7 +380,9 @@ export default function MainNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Hash Table</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-transparent">
+              Hash Table
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {hashTable.map((algorithm) => (

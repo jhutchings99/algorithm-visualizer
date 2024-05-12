@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
 
-const ParticlesComponent = (props: any) => {
+const ParticlesComponent = (props) => {
   const { theme } = useTheme();
   const [key, setKey] = useState(true);
 
