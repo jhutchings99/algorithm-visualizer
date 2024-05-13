@@ -1,13 +1,8 @@
-// "use client";
-
 import ArrayVisualizer from "@/components/array-visualizer";
-import CanvasArea from "@/components/canvas-area";
 import MainNavigation from "@/components/main-navigation";
 import SortingOptions from "@/components/sorting-options";
-import {
-  generateRandomArray,
-  generateMostlySortedArray,
-} from "@/utils/generateArray";
+import { generateRandomArray } from "@/utils/generateArray";
+import { Separator } from "@/components/ui/separator";
 
 export default function BubbleSort() {
   const arr = generateRandomArray(10);
@@ -19,10 +14,11 @@ export default function BubbleSort() {
       <div className="flex">
         <SortingOptions />
         <div className="flex justify-center items-center flex-col">
-          <h1 className="text-3xl font-bold">Bubble Sort</h1>
+          <h1 className="text-xl font-bold py-4 text-center">Bubble Sort</h1>
+          <Separator />
+
           <ArrayVisualizer arr={arr} />
         </div>
-        {/* <CanvasArea /> */}
       </div>
     </div>
   );
