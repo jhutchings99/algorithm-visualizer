@@ -72,10 +72,9 @@ export default function ArrayVisualizer({
   };
   const handleSetSwapDelay = (event: any) => {
     let newDelay = event.detail;
-    if (newDelay < 0.5 || newDelay > 5) return;
+    if (newDelay < 100 || newDelay > 5000) return;
 
-    // convert ms to seconds
-    setSwapDelay(newDelay * 1000);
+    setSwapDelay(newDelay);
   };
 
   const handleStep = () => {

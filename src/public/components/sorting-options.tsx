@@ -41,8 +41,8 @@ export default function SortingOptions() {
   const [playing, setPlaying] = useState(false);
   const ARRAY_SIZE_MIN = 1;
   const ARRAY_SIZE_MAX = 20;
-  const SORT_SPEED_MIN_SECONDS = 0.5;
-  const SORT_SPEED_MAX_SECONDS = 5;
+  const SORT_SPEED_MIN_MS = 100;
+  const SORT_SPEED_MAX_MS = 5000;
 
   return (
     <div className="h-[calc(100vh-5rem)] w-[25vw] border-r">
@@ -96,18 +96,18 @@ export default function SortingOptions() {
         <div className="flex flex-col gap-2">
           <Label>Delay Between Swaps (seconds)</Label>
           <Slider
-            defaultValue={[SORT_SPEED_MAX_SECONDS / 2]}
-            min={SORT_SPEED_MIN_SECONDS}
-            max={SORT_SPEED_MAX_SECONDS}
+            defaultValue={[SORT_SPEED_MAX_MS / 2]}
+            min={SORT_SPEED_MIN_MS}
+            max={SORT_SPEED_MAX_MS}
             step={0.5}
             onValueChange={(value: number[]) => {
               setSwapDelay(value[0]);
             }}
           />
           <div className="flex justify-between">
-            <Label>{SORT_SPEED_MIN_SECONDS}</Label>
-            <Label>{SORT_SPEED_MAX_SECONDS / 2}</Label>
-            <Label>{SORT_SPEED_MAX_SECONDS}</Label>
+            <Label>{SORT_SPEED_MIN_MS}ms</Label>
+            <Label>{SORT_SPEED_MAX_MS / 2}ms</Label>
+            <Label>{SORT_SPEED_MAX_MS}ms</Label>
           </div>
         </div>
         <div className="flex flex-col gap-2">
