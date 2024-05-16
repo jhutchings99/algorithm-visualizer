@@ -4,7 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function playPauseSort(operation: string) {
   const event = new CustomEvent("playPause", { detail: operation });
@@ -43,6 +43,18 @@ export default function SortingOptions() {
   const ARRAY_SIZE_MAX = 20;
   const SORT_SPEED_MIN_MS = 100;
   const SORT_SPEED_MAX_MS = 5000;
+
+  const handleSortFinished = () => {
+    setPlaying(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("setSortFinished", handleSortFinished);
+
+    return () => {
+      document.removeEventListener("setSortFinished", handleSortFinished);
+    };
+  });
 
   return (
     <div className="h-[calc(100vh-5rem)] w-[25vw] border-r">

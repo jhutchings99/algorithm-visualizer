@@ -19,22 +19,17 @@ export default function ArrayVisualizer({
 
   useEffect(() => {
     if (algorithmStr === "bubbleSort") {
-      console.log("setting bub");
       setAlgoritm(() => bubbleSort);
     } else if (algorithmStr === "cocktailSort") {
-      console.log("setting coc");
-
       setAlgoritm(() => cocktailSort);
     } else if (algorithmStr === "quickSort") {
-      console.log("setting quick");
-
       setAlgoritm(() => quickSort);
     }
   }, [algorithmStr]);
 
   const [swapDelay, setSwapDelay] = useState<number>(2.5 * 1000);
   const [array, setArray] = useState(arr);
-  const { displayedArray, done, step, reset, barEffects, stats } =
+  const { displayedArray, done, step, doneStep, reset, barEffects, stats } =
     useSortingVisualizer(array, algorithm);
   const [playing, setPlay] = useState(false);
   useEffect(() => {
@@ -44,7 +39,15 @@ export default function ArrayVisualizer({
       }, swapDelay);
       return () => window.clearInterval(taskId);
     }
-  }, [done, step, playing, swapDelay]);
+    if (done) {
+      setSortFinished();
+      setPlay(false);
+      let taskId = window.setInterval(() => {
+        doneStep();
+      }, 50);
+      return () => window.clearInterval(taskId);
+    }
+  }, [done, step, doneStep, playing, swapDelay, barEffects]);
 
   const handlePlayPauseSort = (event: any) => {
     let operation = event.detail;
@@ -57,18 +60,24 @@ export default function ArrayVisualizer({
     }
   };
 
-  const handleGenerateRandomArray = (event: any) => {
-    let newArr = generateRandomArray(event.detail);
-    if (!newArr) return;
+  const handleGenerateRandomArray = async (event: any) => {
+    for (let i = 0; i < 5; i++) {
+      let newArr = generateRandomArray(event.detail);
+      if (!newArr) return;
 
-    setArray(newArr);
+      setArray(newArr);
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
   };
 
-  const handleGenerateMostlySortedArray = (event: any) => {
-    let newArr = generateMostlySortedArray(event.detail);
-    if (!newArr) return;
+  const handleGenerateMostlySortedArray = async (event: any) => {
+    for (let i = 0; i < 5; i++) {
+      let newArr = generateMostlySortedArray(event.detail);
+      if (!newArr) return;
 
-    setArray(newArr);
+      setArray(newArr);
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
   };
   const handleSetSwapDelay = (event: any) => {
     let newDelay = event.detail;
@@ -84,6 +93,15 @@ export default function ArrayVisualizer({
   const handleReset = () => {
     reset();
   };
+
+  const handleDoneStep = () => {
+    doneStep();
+  };
+
+  function setSortFinished() {
+    const event = new CustomEvent("setSortFinished");
+    document.dispatchEvent(event);
+  }
 
   useEffect(() => {
     document.addEventListener("playPause", handlePlayPauseSort);

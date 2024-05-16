@@ -11,6 +11,7 @@ export function useSortingVisualizer(
   done: boolean;
   reset: () => void;
   step: () => void;
+  doneStep: () => void;
   barEffects: Record<number, string>;
   stats: { compare: number; swap: number };
 } {
@@ -22,11 +23,12 @@ export function useSortingVisualizer(
     stats: { compare: number; swap: number };
   }>({
     displayedArray: [],
-    done: true,
+    done: false,
     barEffects: {},
     stats: { compare: 0, swap: 0 },
   });
   const stepRef = useRef(() => {});
+  const doneStepRef = useRef(() => {});
   useEffect(() => {
     let state = {
       displayedArray: baseArray,
@@ -91,18 +93,40 @@ export function useSortingVisualizer(
         throw new Error("What? " + JSON.stringify(action.value));
       }
     }
+
+    let doneIndex = 0;
+    function doDoneStep() {
+      if (doneIndex < state.displayedArray.length) {
+        let newEffect = barEffects;
+        newEffect[doneIndex] = "green";
+        state = {
+          ...state,
+          done: true,
+          barEffects: newEffect,
+        };
+        setState(state);
+        doneIndex += 1;
+      }
+    }
+
     stepRef.current = doStep;
+    doneStepRef.current = doDoneStep;
   }, [resetCount, baseArray, algoritm]);
 
   const step = useCallback(() => {
     stepRef.current();
   }, [stepRef]);
+  const doneStep = useCallback(() => {
+    doneStepRef.current();
+  }, [doneStepRef]);
+
   return {
     displayedArray,
     done,
     barEffects,
     stats,
     step,
+    doneStep,
     reset,
   };
 }
