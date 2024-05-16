@@ -25,6 +25,12 @@ const array: { title: string; href: string; description: string }[] = [
       "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.",
   },
   {
+    title: "Cocktail Sort",
+    href: "/array/cocktail-sort",
+    description:
+      "Cocktail Sort, also known as Bidirectional Bubble Sort, is a variation of the Bubble Sort algorithm. It works by repeatedly stepping through the list in both directions, comparing adjacent elements, and swapping them if they are in the wrong order. The algorithm passes through the list until no swaps are needed, indicating that the list is sorted.",
+  },
+  {
     title: "Quick Sort",
     href: "/array/quick-sort",
     description:

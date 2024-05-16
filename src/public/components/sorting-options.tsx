@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 
-function startSort(sortAlgo: string) {
-  const event = new CustomEvent("startSort", { detail: sortAlgo });
+function playPauseSort(operation: string) {
+  const event = new CustomEvent("playPause", { detail: operation });
   document.dispatchEvent(event);
 }
 
@@ -26,8 +26,19 @@ function setSwapDelay(delay: number) {
   document.dispatchEvent(event);
 }
 
+function playStep() {
+  const event = new Event("step");
+  document.dispatchEvent(event);
+}
+
+function resetArray() {
+  const event = new Event("reset");
+  document.dispatchEvent(event);
+}
+
 export default function SortingOptions() {
   const [arraySize, setArraySize] = useState(10);
+  const [playing, setPlaying] = useState(false);
   const ARRAY_SIZE_MIN = 1;
   const ARRAY_SIZE_MAX = 20;
   const SORT_SPEED_MIN_SECONDS = 0.5;
@@ -71,6 +82,8 @@ export default function SortingOptions() {
             step={1}
             onValueChange={(value: number[]) => {
               setArraySize(value[0]);
+              setPlaying(false);
+              playPauseSort("pause");
               generateRandomArray(value[0]);
             }}
           />
@@ -98,15 +111,41 @@ export default function SortingOptions() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
+          <Label>Reset Array</Label>
+          <Button
+            variant="outline"
+            onClick={(e) => {
+              e.preventDefault();
+              setPlaying(false);
+              resetArray();
+            }}
+          >
+            Reset
+          </Button>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label>Step</Label>
+          <Button
+            variant="outline"
+            onClick={(e) => {
+              e.preventDefault();
+              playStep();
+            }}
+          >
+            Step
+          </Button>
+        </div>
+        <div className="flex flex-col gap-2">
           <Label>Sort Array</Label>
           <Button
             variant="outline"
             onClick={(e) => {
               e.preventDefault();
-              startSort("bubble-sort");
+              setPlaying(!playing);
+              playPauseSort(playing ? "pause" : "play");
             }}
           >
-            Sort
+            {playing ? "Pause" : "Play"}
           </Button>
         </div>
       </div>

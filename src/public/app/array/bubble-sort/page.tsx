@@ -17,7 +17,7 @@ export default function BubbleSort() {
           <h1 className="text-xl font-bold py-4 text-center">Bubble Sort</h1>
           <Separator />
 
-          <ArrayVisualizer arr={arr} />
+          <ArrayVisualizer arr={arr} algorithmStr="bubbleSort" />
         </div>
       </div>
     </div>

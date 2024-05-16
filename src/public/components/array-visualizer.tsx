@@ -4,67 +4,56 @@ import {
   generateMostlySortedArray,
   generateRandomArray,
 } from "@/utils/generateArray";
-import { bubbleSort } from "@/utils/sortingAlgorithms";
+import { bubbleSort, cocktailSort, quickSort } from "@/utils/sortingAlgorithms";
 import { useEffect, useState } from "react";
+import { useSortingVisualizer } from "@/utils/customHooks";
 
-interface ArrayVisualizerProps {
-  arr: number[];
-}
-
-function BoxRepresentation({
+export default function ArrayVisualizer({
   arr,
-  swaps,
-}: ArrayVisualizerProps & { swaps: number[][] }) {
-  return (
-    <div className="flex">
-      {arr.map((num, index) => {
-        const isSwapped = swaps.some(([i, j]) => i === index || j === index);
-        const backgroundColor = isSwapped
-          ? swaps[0][0] === index
-            ? "bg-yellow-300"
-            : "bg-blue-300"
-          : "bg-purpleSecondary";
+  algorithmStr,
+}: {
+  arr: number[];
+  algorithmStr: string;
+}) {
+  const [algorithm, setAlgoritm] = useState(() => bubbleSort);
 
-        return (
-          <div key={index} className="flex flex-col justify-end">
-            <div
-              className={`w-16 border ${backgroundColor}`}
-              style={{
-                height: num * 20,
-              }}
-            ></div>
-            <div className="h-16 w-16 text-xl border flex items-center justify-center">
-              {num}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+  useEffect(() => {
+    if (algorithmStr === "bubbleSort") {
+      console.log("setting bub");
+      setAlgoritm(() => bubbleSort);
+    } else if (algorithmStr === "cocktailSort") {
+      console.log("setting coc");
 
-export default function ArrayVisualizer({ arr }: ArrayVisualizerProps) {
-  const [array, setArray] = useState(arr);
-  const [swaps, setSwaps] = useState<number[][]>([]);
+      setAlgoritm(() => cocktailSort);
+    } else if (algorithmStr === "quickSort") {
+      console.log("setting quick");
+
+      setAlgoritm(() => quickSort);
+    }
+  }, [algorithmStr]);
+
   const [swapDelay, setSwapDelay] = useState<number>(2.5 * 1000);
+  const [array, setArray] = useState(arr);
+  const { displayedArray, done, step, reset, barEffects, stats } =
+    useSortingVisualizer(array, algorithm);
+  const [playing, setPlay] = useState(false);
+  useEffect(() => {
+    if (!done && playing) {
+      let taskId = window.setInterval(() => {
+        step();
+      }, swapDelay);
+      return () => window.clearInterval(taskId);
+    }
+  }, [done, step, playing, swapDelay]);
 
-  const handleStartSort = async (event: any) => {
-    switch (event.detail) {
-      case "bubble-sort":
-        let swaps = bubbleSort(array);
-        for (let swap of swaps) {
-          await new Promise((resolve) => setTimeout(resolve, swapDelay));
-          let temp = array[swap[0]];
-          array[swap[0]] = array[swap[1]];
-          array[swap[1]] = temp;
-          setArray([...array]);
-          setSwaps([swap]);
-        }
-        setSwaps([]);
+  const handlePlayPauseSort = (event: any) => {
+    let operation = event.detail;
+    if (!operation) return;
 
-        break;
-      default:
-        console.log("not found");
+    if (operation === "play") {
+      setPlay(true);
+    } else if (operation === "pause") {
+      setPlay(false);
     }
   };
 
@@ -89,8 +78,18 @@ export default function ArrayVisualizer({ arr }: ArrayVisualizerProps) {
     setSwapDelay(newDelay * 1000);
   };
 
+  const handleStep = () => {
+    step();
+  };
+
+  const handleReset = () => {
+    reset();
+  };
+
   useEffect(() => {
-    document.addEventListener("startSort", handleStartSort);
+    document.addEventListener("playPause", handlePlayPauseSort);
+    document.addEventListener("step", handleStep);
+    document.addEventListener("reset", handleReset);
     document.addEventListener("generateRandomArray", handleGenerateRandomArray);
     document.addEventListener(
       "generateMostlySortedArray",
@@ -99,7 +98,10 @@ export default function ArrayVisualizer({ arr }: ArrayVisualizerProps) {
     document.addEventListener("setSwapDelay", handleSetSwapDelay);
 
     return () => {
-      document.removeEventListener("startSort", handleStartSort);
+      document.removeEventListener("playPause", handlePlayPauseSort);
+      document.removeEventListener("step", handleStep);
+      document.removeEventListener("reset", handleReset);
+
       document.removeEventListener(
         "generateRandomArray",
         handleGenerateRandomArray
@@ -113,8 +115,25 @@ export default function ArrayVisualizer({ arr }: ArrayVisualizerProps) {
   });
 
   return (
-    <div className="h-[calc(100vh-8.8rem)] w-[80vw] flex items-center justify-center">
-      <BoxRepresentation arr={array} swaps={swaps} />
+    <div className="h-[calc(100vh-8.8rem)] min-w-[80vw] flex items-center justify-center">
+      <div className="flex">
+        {displayedArray.map((num, index) => {
+          return (
+            <div key={index} className="flex flex-col justify-end">
+              <div
+                className="w-16 border bg-purpleSecondary"
+                style={{
+                  height: num * 20,
+                  backgroundColor: barEffects[index],
+                }}
+              ></div>
+              <div className="h-16 w-16 text-xl border flex items-center justify-center">
+                {num}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
