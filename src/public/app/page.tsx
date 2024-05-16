@@ -13,13 +13,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main className=" overflow-x-hidden">
       <MainNavigation />
       <ParticlesComponent />
 
-      <div className="mt-40 mb-48 w-screen mx-52">
+      <div className="mx-52 mt-40 mb-48">
         <h1 className="text-6xl font-bold pb-10">Welcome to Visualgorithms</h1>
-        <h2 className="text-4xl font-medium pb-4 text-wrap max-w-[60vw]">
+        <h2 className="text-4xl font-medium pb-4 text-wrap max-w-[50vw]">
           Dive into Algorithms & Data Structures visually! Explore sorting,
           graph traversal, trees, and more. Perfect for learners and developers
           alike.
