@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        ogGreen: "#008000",
+        ogRed: "#ff0000",
         pinkPrimary: "#FF81CC",
         purpleSecondary: "#240089",
         border: "hsl(var(--border))",
