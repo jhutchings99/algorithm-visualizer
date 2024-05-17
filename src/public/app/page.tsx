@@ -107,7 +107,7 @@ export default function Home() {
                 variant="outline"
                 className="bg-transparent backdrop-blur-sm w-full"
               >
-                <Link href="graph/dijkstra">Visualize Now</Link>
+                <Link href="graph/prims">Visualize Now</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -146,7 +146,7 @@ export default function Home() {
                 variant="outline"
                 className="bg-transparent backdrop-blur-sm w-full"
               >
-                <Link href="graph/bellman-ford">Visualize Now</Link>
+                <Link href="array/quick-sort">Visualize Now</Link>
               </Button>
             </CardFooter>
           </Card>

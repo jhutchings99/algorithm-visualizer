@@ -4,7 +4,7 @@ import SortingOptions from "@/components/sorting-options";
 import { generateRandomArray } from "@/utils/generateArray";
 import { Separator } from "@/components/ui/separator";
 
-export default function BubbleSort() {
+export default function QuickSort() {
   const arr = generateRandomArray(10);
   if (!arr) return;
 

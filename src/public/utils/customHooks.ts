@@ -4,8 +4,9 @@ export function useSortingVisualizer(
   baseArray: number[],
   algoritm: (
     from: number,
-    to: number
-  ) => Generator<["swap" | "compare", number, number], void, number>
+    to: number,
+    arr: number[]
+  ) => Generator<["swap" | "compare", number, number, number[]], void, number>
 ): {
   displayedArray: number[];
   done: boolean;
@@ -37,7 +38,7 @@ export function useSortingVisualizer(
       stats: { compare: 0, swap: 0 },
     };
     setState(state);
-    const generator = algoritm(0, state.displayedArray.length);
+    const generator = algoritm(0, state.displayedArray.length, baseArray);
     let nextValue = 0;
     function doStep() {
       const action = generator.next(nextValue);

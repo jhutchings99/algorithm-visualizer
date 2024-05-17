@@ -4,7 +4,12 @@ import {
   generateMostlySortedArray,
   generateRandomArray,
 } from "@/utils/generateArray";
-import { bubbleSort, cocktailSort, quickSort } from "@/utils/sortingAlgorithms";
+import {
+  bubbleSort,
+  cocktailSort,
+  mergeSort,
+  quickSort,
+} from "@/utils/sortingAlgorithms";
 import { useEffect, useState } from "react";
 import { useSortingVisualizer } from "@/utils/customHooks";
 
@@ -24,6 +29,8 @@ export default function ArrayVisualizer({
       setAlgoritm(() => cocktailSort);
     } else if (algorithmStr === "quickSort") {
       setAlgoritm(() => quickSort);
+    } else if (algorithmStr === "mergeSort") {
+      setAlgoritm(() => mergeSort);
     }
   }, [algorithmStr]);
 

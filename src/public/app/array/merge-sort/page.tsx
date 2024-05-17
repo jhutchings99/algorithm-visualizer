@@ -3,21 +3,25 @@ import MainNavigation from "@/components/main-navigation";
 import SortingOptions from "@/components/sorting-options";
 import { generateRandomArray } from "@/utils/generateArray";
 import { Separator } from "@/components/ui/separator";
+import SortingKey from "@/components/sorting-key";
 
-export default function CocktailSort() {
+export default function MergeSort() {
   const arr = generateRandomArray(10);
   if (!arr) return;
 
   return (
     <div>
       <MainNavigation />
-      <div className="flex">
+      <div className="flex ">
         <SortingOptions />
-        <div className="flex justify-center items-center flex-col">
-          <h1 className="text-xl font-bold py-4 text-center">Cocktail Sort</h1>
-          <Separator />
+        <div className="flex justify-center items-center flex-col ">
+          <div className="w-full">
+            <h1 className="text-xl font-bold py-4 text-center">Merge Sort</h1>
+            <Separator />
+            <SortingKey />
+          </div>
 
-          <ArrayVisualizer arr={arr} algorithmStr="cocktailSort" />
+          <ArrayVisualizer arr={arr} algorithmStr="mergeSort" />
         </div>
       </div>
     </div>
