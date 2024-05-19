@@ -102,3 +102,21 @@ export function* mergeSort(
     i++;
   }
 }
+
+export function* selectionSort(
+  from: number,
+  to: number,
+  arr: number[]
+): Generator<["swap" | "compare", number, number, number[]], void, number> {
+  for (let i = from; i < to; i++) {
+    let min = i;
+    for (let j = i + 1; j < to; j++) {
+      if ((yield compare(j, min, [])) < 0) {
+        min = j;
+      }
+    }
+    if (min !== i) {
+      yield swap(i, min, []);
+    }
+  }
+}

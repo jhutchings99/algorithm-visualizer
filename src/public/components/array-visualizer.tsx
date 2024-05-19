@@ -9,6 +9,7 @@ import {
   cocktailSort,
   mergeSort,
   quickSort,
+  selectionSort,
 } from "@/utils/sortingAlgorithms";
 import { useEffect, useState } from "react";
 import { useSortingVisualizer } from "@/utils/customHooks";
@@ -31,6 +32,8 @@ export default function ArrayVisualizer({
       setAlgoritm(() => quickSort);
     } else if (algorithmStr === "mergeSort") {
       setAlgoritm(() => mergeSort);
+    } else if (algorithmStr === "selectionSort") {
+      setAlgoritm(() => selectionSort);
     }
   }, [algorithmStr]);
 
