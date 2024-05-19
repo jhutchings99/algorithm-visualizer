@@ -42,7 +42,7 @@ export default function SortingOptions() {
   const ARRAY_SIZE_MIN = 1;
   const ARRAY_SIZE_MAX = 20;
   const SORT_SPEED_MIN_MS = 100;
-  const SORT_SPEED_MAX_MS = 5000;
+  const SORT_SPEED_MAX_MS = 1000;
 
   const handleSortFinished = () => {
     setPlaying(false);
@@ -106,12 +106,12 @@ export default function SortingOptions() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <Label>Delay Between Swaps (seconds)</Label>
+          <Label>Delay Between Swaps (ms)</Label>
           <Slider
             defaultValue={[SORT_SPEED_MAX_MS / 2]}
             min={SORT_SPEED_MIN_MS}
             max={SORT_SPEED_MAX_MS}
-            step={0.5}
+            step={1}
             onValueChange={(value: number[]) => {
               setSwapDelay(value[0]);
             }}

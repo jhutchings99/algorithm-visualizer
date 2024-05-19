@@ -39,7 +39,6 @@ export function useSortingVisualizer(
     };
     setState(state);
     const generator = algoritm(0, state.displayedArray.length, baseArray);
-    console.log(baseArray);
     let nextValue = 0;
     function doStep() {
       const action = generator.next(nextValue);

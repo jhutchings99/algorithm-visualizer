@@ -34,7 +34,7 @@ export default function ArrayVisualizer({
     }
   }, [algorithmStr]);
 
-  const [swapDelay, setSwapDelay] = useState<number>(2.5 * 1000);
+  const [swapDelay, setSwapDelay] = useState<number>(500);
   const [array, setArray] = useState([...arr]);
   const [ogArray, setOgArray] = useState([...arr]);
   const { displayedArray, done, step, doneStep, reset, barEffects, stats } =
@@ -85,7 +85,7 @@ export default function ArrayVisualizer({
   };
   const handleSetSwapDelay = (event: any) => {
     let newDelay = event.detail;
-    if (newDelay < 100 || newDelay > 5000) return;
+    if (newDelay < 1 || newDelay > 2500) return;
 
     setSwapDelay(newDelay);
   };
