@@ -35,7 +35,8 @@ export default function ArrayVisualizer({
   }, [algorithmStr]);
 
   const [swapDelay, setSwapDelay] = useState<number>(2.5 * 1000);
-  const [array, setArray] = useState(arr);
+  const [array, setArray] = useState([...arr]);
+  const [ogArray, setOgArray] = useState([...arr]);
   const { displayedArray, done, step, doneStep, reset, barEffects, stats } =
     useSortingVisualizer(array, algorithm);
   const [playing, setPlay] = useState(false);
@@ -67,24 +68,20 @@ export default function ArrayVisualizer({
     }
   };
 
-  const handleGenerateRandomArray = async (event: any) => {
-    for (let i = 0; i < 5; i++) {
-      let newArr = generateRandomArray(event.detail);
-      if (!newArr) return;
+  const handleGenerateRandomArray = (event: any) => {
+    let newArr = generateRandomArray(event.detail);
+    if (!newArr) return;
 
-      setArray(newArr);
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    }
+    setOgArray([...newArr]);
+    setArray([...newArr]);
   };
 
-  const handleGenerateMostlySortedArray = async (event: any) => {
-    for (let i = 0; i < 5; i++) {
-      let newArr = generateMostlySortedArray(event.detail);
-      if (!newArr) return;
+  const handleGenerateMostlySortedArray = (event: any) => {
+    let newArr = generateMostlySortedArray(event.detail);
+    if (!newArr) return;
 
-      setArray(newArr);
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    }
+    setOgArray([...newArr]);
+    setArray([...newArr]);
   };
   const handleSetSwapDelay = (event: any) => {
     let newDelay = event.detail;
@@ -97,8 +94,12 @@ export default function ArrayVisualizer({
     step();
   };
 
-  const handleReset = () => {
-    reset();
+  const handleReset = async () => {
+    for (let i = 0; i < 5; i++) {
+      reset();
+      setArray([...ogArray]);
+      await new Promise((resolve) => setTimeout(resolve, 10));
+    }
   };
 
   const handleDoneStep = () => {

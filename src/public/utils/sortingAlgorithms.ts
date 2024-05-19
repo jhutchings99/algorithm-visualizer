@@ -86,7 +86,6 @@ export function* mergeSort(
   to: number,
   arr: number[]
 ): Generator<["swap" | "compare", number, number, number[]], void, number> {
-  console.log(from, to, arr);
   if (to - from <= 1) {
     return;
   }

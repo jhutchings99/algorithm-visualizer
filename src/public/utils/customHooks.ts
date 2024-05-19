@@ -39,6 +39,7 @@ export function useSortingVisualizer(
     };
     setState(state);
     const generator = algoritm(0, state.displayedArray.length, baseArray);
+    console.log(baseArray);
     let nextValue = 0;
     function doStep() {
       const action = generator.next(nextValue);
@@ -112,7 +113,7 @@ export function useSortingVisualizer(
 
     stepRef.current = doStep;
     doneStepRef.current = doDoneStep;
-  }, [resetCount, baseArray, algoritm]);
+  }, [resetCount, algoritm, baseArray]);
 
   const step = useCallback(() => {
     stepRef.current();
