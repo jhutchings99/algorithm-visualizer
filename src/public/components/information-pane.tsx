@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { Info } from "lucide-react";
 import CodeBlock from "./code-block";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function InformationPane() {
   let codeString = `let code = foo();
@@ -25,30 +26,41 @@ function foo(hi: string) {
           <Info />
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="w-[400px] sm:w-[400px] sm:max-w-[400px]">
         <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
+          <SheetTitle>Information</SheetTitle>
           <SheetDescription>
-            <CodeBlock language="typescript" code={codeString} />
+            <Tabs defaultValue="javascript">
+              <TabsList>
+                <TabsTrigger value="javascript">JavaScript</TabsTrigger>
+                <TabsTrigger value="python">Python</TabsTrigger>
+                <TabsTrigger value="java">Java</TabsTrigger>
+                <TabsTrigger value="c++">C++</TabsTrigger>
+                <TabsTrigger value="go">Go</TabsTrigger>
+                <TabsTrigger value="rust">Rust</TabsTrigger>
+              </TabsList>
+              <TabsContent value="javascript" className="w-[362px]">
+                <CodeBlock language="typescript" code={codeString} />
+              </TabsContent>
+            </Tabs>
+          </SheetDescription>
+          <SheetTitle>Code</SheetTitle>
+          <SheetDescription>
+            <Tabs defaultValue="javascript">
+              <TabsList>
+                <TabsTrigger value="javascript">JavaScript</TabsTrigger>
+                <TabsTrigger value="python">Python</TabsTrigger>
+                <TabsTrigger value="java">Java</TabsTrigger>
+                <TabsTrigger value="c++">C++</TabsTrigger>
+                <TabsTrigger value="go">Go</TabsTrigger>
+                <TabsTrigger value="rust">Rust</TabsTrigger>
+              </TabsList>
+              <TabsContent value="javascript" className="w-[362px]">
+                <CodeBlock language="typescript" code={codeString} />
+              </TabsContent>
+            </Tabs>
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-          </div>
-        </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
