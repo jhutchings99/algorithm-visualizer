@@ -4,6 +4,7 @@ import SortingOptions from "@/components/sorting-options";
 import { generateRandomArray } from "@/utils/generateArray";
 import { Separator } from "@/components/ui/separator";
 import SortingKey from "@/components/sorting-key";
+import InformationPane from "@/components/information-pane";
 
 export default function BubbleSort() {
   const arr = generateRandomArray(10);
@@ -14,11 +15,14 @@ export default function BubbleSort() {
       <MainNavigation />
       <div className="flex ">
         <SortingOptions />
-        <div className="flex justify-center items-center flex-col ">
+        <div className="flex justify-center items-center flex-col relative">
           <div className="w-full">
             <h1 className="text-xl font-bold py-4 text-center">Bubble Sort</h1>
             <Separator />
-            <SortingKey />
+            <div className="flex">
+              <InformationPane />
+              <SortingKey />
+            </div>
           </div>
 
           <ArrayVisualizer arr={arr} algorithmStr="bubbleSort" />
