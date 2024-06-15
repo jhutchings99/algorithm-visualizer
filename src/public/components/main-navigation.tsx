@@ -48,12 +48,6 @@ const array: { title: string; href: string; description: string }[] = [
     description:
       "A simple sorting algorithm that divides the input list into two parts: a sorted sublist and an unsorted sublist.",
   },
-  {
-    title: "Heap Sort",
-    href: "/array/heap-sort",
-    description:
-      "A comparison-based sorting algorithm that uses a binary heap data structure to sort elements.",
-  },
 ];
 
 const stack: { title: string; href: string; description: string }[] = [
@@ -279,7 +273,7 @@ export default function MainNavigation() {
         <div className="flex gap-2">
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
-              Array
+              Sorting
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -295,7 +289,7 @@ export default function MainNavigation() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Stack
             </NavigationMenuTrigger>
@@ -402,7 +396,7 @@ export default function MainNavigation() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           <NavigationMenuItem>
             <ModeToggle />
           </NavigationMenuItem>
