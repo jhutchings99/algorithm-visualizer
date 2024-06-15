@@ -13,12 +13,16 @@ import {
 import { Info } from "lucide-react";
 import CodeBlock from "./code-block";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "./ui/separator";
 
-export default function InformationPane() {
-  let codeString = `let code = foo();
-function foo(hi: string) {
-    return 1 + 1;
-}`;
+interface InformationPaneProps {
+  description: string;
+  keyPoints: string[];
+  codeBlocks: string[];
+  languages: string[];
+}
+
+export default function InformationPane(props: InformationPaneProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -28,36 +32,38 @@ function foo(hi: string) {
       </SheetTrigger>
       <SheetContent className="w-[400px] sm:w-[400px] sm:max-w-[400px]">
         <SheetHeader>
+          <SheetTitle>Description</SheetTitle>
+          <SheetDescription>{props.description}</SheetDescription>
+          <Separator />
           <SheetTitle>Information</SheetTitle>
           <SheetDescription>
-            <Tabs defaultValue="javascript">
-              <TabsList>
-                <TabsTrigger value="javascript">JavaScript</TabsTrigger>
-                <TabsTrigger value="python">Python</TabsTrigger>
-                <TabsTrigger value="java">Java</TabsTrigger>
-                <TabsTrigger value="c++">C++</TabsTrigger>
-                <TabsTrigger value="go">Go</TabsTrigger>
-                <TabsTrigger value="rust">Rust</TabsTrigger>
-              </TabsList>
-              <TabsContent value="javascript" className="w-[362px]">
-                <CodeBlock language="typescript" code={codeString} />
-              </TabsContent>
-            </Tabs>
+            <ul className=" list-disc list-inside">
+              {props.keyPoints.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
           </SheetDescription>
+          <Separator />
+
           <SheetTitle>Code</SheetTitle>
           <SheetDescription>
             <Tabs defaultValue="javascript">
               <TabsList>
-                <TabsTrigger value="javascript">JavaScript</TabsTrigger>
-                <TabsTrigger value="python">Python</TabsTrigger>
-                <TabsTrigger value="java">Java</TabsTrigger>
-                <TabsTrigger value="c++">C++</TabsTrigger>
-                <TabsTrigger value="go">Go</TabsTrigger>
-                <TabsTrigger value="rust">Rust</TabsTrigger>
+                {props.languages.map((language, index) => (
+                  <TabsTrigger key={index} value={language}>
+                    {language}
+                  </TabsTrigger>
+                ))}
               </TabsList>
-              <TabsContent value="javascript" className="w-[362px]">
-                <CodeBlock language="typescript" code={codeString} />
-              </TabsContent>
+              {props.codeBlocks.map((code, index) => (
+                <TabsContent
+                  key={index}
+                  value={props.languages[index]}
+                  className="w-[362px]"
+                >
+                  <CodeBlock language={props.languages[index]} code={code} />
+                </TabsContent>
+              ))}
             </Tabs>
           </SheetDescription>
         </SheetHeader>

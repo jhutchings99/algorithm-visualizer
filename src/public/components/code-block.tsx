@@ -65,7 +65,9 @@ export default function CodeBlock(props: CodeBlockProps) {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <code className={`language-${props.language}`}>{props.code.trim()}</code>
+      <code className={`language-${props.language} text-wrap break-words`}>
+        {props.code.trim()}
+      </code>
     </pre>
   );
 }
