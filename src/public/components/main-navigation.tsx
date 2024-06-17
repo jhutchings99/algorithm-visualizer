@@ -184,50 +184,29 @@ const tree: { title: string; href: string; description: string }[] = [
 
 const graph: { title: string; href: string; description: string }[] = [
   {
-    title: "Add Vertex",
-    href: "/graph/add-vertex",
-    description: "Adds a vertex (node) to the graph.",
-  },
-  {
-    title: "Add Edge",
-    href: "/graph/add-edge",
-    description: "Adds an edge (connection) between two vertices in the graph.",
-  },
-  {
-    title: "Remove Vertex",
-    href: "/graph/remove-vertex",
-    description: "Removes a vertex (node) from the graph.",
-  },
-  {
-    title: "Remove Edge",
-    href: "/graph/remove-edge",
-    description:
-      "Removes an edge (connection) between two vertices in the graph.",
-  },
-  {
     title: "Breadth-First Search (BFS)",
     href: "/graph/bfs",
     description:
       "Finds the shortest path from a starting vertex to all other vertices in the graph using breadth-first search.",
   },
-  {
-    title: "Depth-First Search (DFS)",
-    href: "/graph/dfs",
-    description:
-      "Traverses or searches through the graph using depth-first search.",
-  },
-  {
-    title: "Dijkstra's Algorithm",
-    href: "/graph/dijkstra",
-    description:
-      "Finds the shortest path from a starting vertex to all other vertices in the graph with non-negative edge weights.",
-  },
-  {
-    title: "Bellman-Ford Algorithm",
-    href: "/graph/bellman-ford",
-    description:
-      "Finds the shortest path from a starting vertex to all other vertices in the graph, which may have negative edge weights.",
-  },
+  // {
+  //   title: "Depth-First Search (DFS)",
+  //   href: "/graph/dfs",
+  //   description:
+  //     "Traverses or searches through the graph using depth-first search.",
+  // },
+  // {
+  //   title: "Dijkstra's Algorithm",
+  //   href: "/graph/dijkstra",
+  //   description:
+  //     "Finds the shortest path from a starting vertex to all other vertices in the graph with non-negative edge weights.",
+  // },
+  // {
+  //   title: "Bellman-Ford Algorithm",
+  //   href: "/graph/bellman-ford",
+  //   description:
+  //     "Finds the shortest path from a starting vertex to all other vertices in the graph, which may have negative edge weights.",
+  // },
 ];
 
 const hashTable: { title: string; href: string; description: string }[] = [
@@ -306,8 +285,8 @@ export default function MainNavigation() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
+          </NavigationMenuItem> */}
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Queue
             </NavigationMenuTrigger>
@@ -324,8 +303,8 @@ export default function MainNavigation() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
+          </NavigationMenuItem> */}
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Linked List
             </NavigationMenuTrigger>
@@ -342,8 +321,8 @@ export default function MainNavigation() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
+          </NavigationMenuItem> */}
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Tree
             </NavigationMenuTrigger>
@@ -360,7 +339,7 @@ export default function MainNavigation() {
                 ))}
               </ul>
             </NavigationMenuContent>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Graph
@@ -379,7 +358,7 @@ export default function MainNavigation() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
               Hash Table
             </NavigationMenuTrigger>
